@@ -1,0 +1,28 @@
+#!/bin/bash
+# A script to compile C++ files with g++
+
+if [ "$1" == "-r" ]; then
+  run_exe=true
+  dirname="$2"
+else
+  run_exe=false
+  dirname="$1"
+fi
+
+if [ -z "$dirname" ]; then
+   echo "Usage: cppbuild [-r] <path/to/dir>"
+   exit 1
+fi
+
+g++ -std=c++2a "$dirname"/*.cpp -o "$dirname/main.exe"
+
+if [ $? -eq 0 ]; then
+  echo "Compilation successful: $dirname/main.exe"
+else
+  echo "Compilation failed."
+  exit 1
+fi
+
+if [ "$run_exe" = true ]; then
+  "$dirname/main.exe"
+fi
