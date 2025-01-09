@@ -10,8 +10,8 @@ Color intToColor(int value) {
     case 3:
       return static_cast<Color>(value);
     default:
-      std::invalid_argument("Invalid color to serialize: " +
-                            std::to_string(value));
+      throw std::invalid_argument("Invalid color to serialize: " +
+                                  std::to_string(value));
   }
 }
 
@@ -21,7 +21,7 @@ int main() {
   std::cin >> input;
   try {
     intToColor(std::stoi(input));
-    std::cout << "Successfully serialized color.";
+    std::cout << "Successfully serialized color." << std::endl;
     return 0;
   } catch (const std::exception& e) {
     std::cerr << "Error: " << e.what() << std::endl;
