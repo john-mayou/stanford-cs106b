@@ -1,21 +1,35 @@
-#include <cmath>
 #include <iostream>
+
+bool isPrime(int n) {
+  for (int i = 2; i < n; i++) {
+    if (n % i == 0) return false;
+  }
+  return true;
+}
 
 int main() {
   int n;
-  std::cout << "This program reverses the digits in an integer." << std::endl;
-  std::cout << "Enter a positive integer: ";
+  std::cout << "This program factors a number." << std::endl;
+  std::cout << "Enter number to be factored: ";
   std::cin >> n;
 
-  int r = 0;
-  int degree =
-      int(std::log10(n));  // find maximum degree (9423 -> 10^3.97 -> 3)
-  while (n > 0) {
-    r += (n % 10) * std::pow(10, degree);
-    n /= 10;
-    degree--;
+  bool isFirst = true;
+  int current = 2;
+  while (n != 1) {
+    if (n % current == 0) {
+      if (isFirst) {
+        std::cout << current;
+        isFirst = false;
+      } else {
+        std::cout << " x " << current;
+      }
+      n /= current;
+    } else {
+      current++;
+      while (!isPrime(current)) current++;
+    }
   }
+  std::cout << std::endl;
 
-  std::cout << "Reversed: " << r << std::endl;
   return 0;
 }
