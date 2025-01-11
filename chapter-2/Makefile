@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX = clang++
-CXXFLAGS = -std=c++20 -I/opt/homebrew/include
+CXXFLAGS = -std=c++20 -I/opt/homebrew/include -I/opt/homebrew/Cellar/magic_enum/0.9.7/include/magic_enum/
 
 # Target executable
 TARGET = main.exe
