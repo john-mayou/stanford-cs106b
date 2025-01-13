@@ -32,5 +32,8 @@ Release/
 *.tmp
 *~
 
+# Env
+.env
+
 # Vscode
 .vscode
